@@ -16,12 +16,12 @@ Example Usage: *(Alice sending message to Bob)*
 
 
 ### How this works:
-We first locally generate a public and private key pair for the sender and the receiver. Each party's key pair is generated using the CryptoTools.net RSA key generator. 
+We first locally generate a 2048 bit RSA public and private key pair for the sender and the receiver. Each party's key pair is generated using the CryptoTools.net RSA key generator. 
 
 Then, in order for communication to go both ways, we created two general Python scripts:  
 
 Sender: 
-The sender script takes the message.txt file, encrypts the message with AES 256 and CBC mode, encrypts the AES key with the receiver’s RSA public key, computes the SHA-256 MAC, and saves the outputted text to Transmitted_Data.txt.
+The sender script takes the message.txt file, encrypts the message with AES 256 bit key and CBC mode with a 128 bit nonce, encrypts the AES key with the receiver’s RSA public key, computes the SHA-256 MAC, and saves the outputted text to Transmitted_Data.txt.
 
 Receiver:
 The receiver script takes the Transmitted_Data.txt file, decrypts the AES key with the receiver’s private key, validates the MAC, unpads the ciphertext, decrypts it and saves that output to decrypted.txt.
